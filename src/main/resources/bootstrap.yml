@@ -4,5 +4,7 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://localhost:9999
+      uri: http://localhost:8081/
+      username: develop
+      password: develop
 

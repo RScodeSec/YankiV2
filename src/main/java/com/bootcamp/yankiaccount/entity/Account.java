@@ -1,24 +1,28 @@
 package com.bootcamp.yankiaccount.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
 @Builder
+@ToString
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "account")
 public class Account {
+    @Id
     private String idYankiAccount;
-    private Integer documentNumber;
+
+    private String documentNumber;
     private String documentType;
-    private Integer phoneNumber;
-    private Integer imei;
+    private String phoneNumber;
+    private String imei;
     private String email;
-    private Integer debitCard;
+    private String debitCard;
 
     @Builder.Default
     private Double balance = 0.0;

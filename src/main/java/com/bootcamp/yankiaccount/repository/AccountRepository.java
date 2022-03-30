@@ -5,5 +5,6 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
 
 public interface AccountRepository extends ReactiveMongoRepository<Account, String> {
-    Mono<Account> findByPhoneNumber(Integer phoneNumber);
+    Mono<Account> findByPhoneNumber(String phoneNumber);
+    Mono<Account> findByIdYankiAccount(String idAccount);
 }
