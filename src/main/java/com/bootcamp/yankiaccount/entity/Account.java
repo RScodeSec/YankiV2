@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 
 @Builder
-@ToString
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,6 +22,7 @@ public class Account {
     private String imei;
     private String email;
     private String debitCard;
+    private String associatedAccount;
 
     @Builder.Default
     private Double balance = 0.0;
