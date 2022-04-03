@@ -7,4 +7,9 @@ spring:
       uri: http://localhost:8081/
       username: develop
       password: develop
-
+  kafka:
+    bootstrap-servers: localhost:9092
+    #producer:
+     # key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+topic: paymentRequest

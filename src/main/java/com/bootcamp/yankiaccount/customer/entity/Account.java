@@ -1,4 +1,4 @@
-package com.bootcamp.yankiaccount.entity;
+package com.bootcamp.yankiaccount.customer.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Document(collection = "account")
 public class Account {
     @Id

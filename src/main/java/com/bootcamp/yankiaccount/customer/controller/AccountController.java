@@ -1,7 +1,7 @@
-package com.bootcamp.yankiaccount.controller;
+package com.bootcamp.yankiaccount.customer.controller;
 
-import com.bootcamp.yankiaccount.entity.Account;
-import com.bootcamp.yankiaccount.service.AccountService;
+import com.bootcamp.yankiaccount.customer.entity.Account;
+import com.bootcamp.yankiaccount.customer.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
