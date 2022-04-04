@@ -9,7 +9,13 @@ spring:
       password: develop
   kafka:
     bootstrap-servers: localhost:9092
+
     #producer:
      # key-serializer: org.apache.kafka.common.serialization.StringSerializer
       #value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+  redis:
+    host: localhost
+    port: 6379
 topic: paymentRequest
+cache:
+  enabled: true

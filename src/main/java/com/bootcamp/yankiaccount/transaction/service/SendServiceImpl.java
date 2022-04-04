@@ -7,6 +7,7 @@ import com.bootcamp.yankiaccount.transaction.dto.SendKafka;
 import com.bootcamp.yankiaccount.transaction.entity.Send;
 import com.bootcamp.yankiaccount.transaction.message.producer.KafkaSender;
 import com.bootcamp.yankiaccount.transaction.repository.SendRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 import java.util.Objects;
 
+@Log4j2
 @Service
 public class SendServiceImpl  implements SendService{
     @Value("${topic}")
@@ -84,6 +86,12 @@ public class SendServiceImpl  implements SendService{
 
 
         return Mono.just(update.block());
+    }
+
+    @Override
+    public Mono<Send> findByOperationNumber(String opNumber) {
+        log.info("making request to DB");
+        return sendRepository.findByOperationNumber(opNumber);
     }
 
     private Flux<Account> updateBalancesInMemory (List<Account> account, Send send) {

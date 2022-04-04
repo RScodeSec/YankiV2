@@ -9,4 +9,5 @@ public interface SendService {
 
     Mono<Send> sendTransaction (Send send);
     Mono<Account> processPaymentConfirmation(ProcessConfirmation processConfirmation);
+    Mono<Send> findByOperationNumber(String opNumber);
 }
