@@ -1,5 +1,6 @@
 package com.bootcamp.yankiaccount.transaction.config.producer;
 
+import com.bootcamp.yankiaccount.transaction.dto.BootCoinBuyConfirm;
 import com.bootcamp.yankiaccount.transaction.dto.SendKafka;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -33,6 +34,18 @@ public class KafkaProducerConfig {
     @Bean
     public KafkaTemplate<String, SendKafka> kafkaTemplate(
             ProducerFactory<String, SendKafka> producerFactory
+    ) {
+        return new KafkaTemplate<>(producerFactory);
+    }
+
+    //Producer to BootCoin
+    @Bean
+    public ProducerFactory<String, BootCoinBuyConfirm> producerFactoryBootCoin() {
+        return new DefaultKafkaProducerFactory<>(producerConfig());
+    }
+    @Bean
+    public KafkaTemplate<String, BootCoinBuyConfirm> kafkaTemplateBootCoin(
+            ProducerFactory<String, BootCoinBuyConfirm> producerFactory
     ) {
         return new KafkaTemplate<>(producerFactory);
     }

@@ -1,5 +1,6 @@
 package com.bootcamp.yankiaccount.transaction.config.consumer;
 
+import com.bootcamp.yankiaccount.transaction.dto.BootCoinRequest;
 import com.bootcamp.yankiaccount.transaction.dto.ProcessConfirmation;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -39,6 +40,7 @@ public class KafkaConsumerConfig {
         return new DefaultKafkaConsumerFactory<>(consumerConfig(),new StringDeserializer(), deserializer);
     }
 
+
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, ProcessConfirmation> factory() {
         ConcurrentKafkaListenerContainerFactory<String, ProcessConfirmation> factory =
@@ -47,4 +49,28 @@ public class KafkaConsumerConfig {
         factory.setBatchListener(true);
         return factory;
     }
+
+
+    //new Consumer
+
+    @Bean
+    public ConsumerFactory<String, BootCoinRequest> consumerFactoryBootCoin() {
+        JsonDeserializer<BootCoinRequest> deserializer = new JsonDeserializer<>(BootCoinRequest.class);
+        deserializer.setRemoveTypeHeaders(false);
+        deserializer.addTrustedPackages("*");
+        deserializer.setUseTypeMapperForKey(true);
+        return new DefaultKafkaConsumerFactory<>(consumerConfig(),new StringDeserializer(), deserializer);
+    }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, BootCoinRequest> factoryBootcoin() {
+        ConcurrentKafkaListenerContainerFactory<String, BootCoinRequest> factory =
+                new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(consumerFactoryBootCoin());
+        factory.setBatchListener(true);
+        return factory;
+    }
+
+
+
 }
