@@ -19,3 +19,6 @@ spring:
 topic: paymentRequest
 cache:
   enabled: true
+
+purchase:
+  rate: 2.1
